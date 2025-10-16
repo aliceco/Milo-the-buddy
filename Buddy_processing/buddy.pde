@@ -27,8 +27,9 @@ void setup() {
 
   //String portName = "/dev/cu.usbmodem1301"; // explicitly pick Arduino port
 
-  String portName = Serial.list()[2]; //change the 0 to a 1 or 2 etc. to match your port
+  String portName = Serial.list()[4]; //change the 0 to a 1 or 2 etc. to match your port
   myPort = new Serial(this, portName, 9600);
+  println (Serial.list());
   
   size(200,200);
   minim = new Minim(this);
@@ -43,7 +44,7 @@ void setup() {
   optionsQuestion1[0] = minim.loadFile("1-Question1.mp3");
   
   optionsQuestion2 = new AudioPlayer[4];
-  optionsQuestion2[0] = minim.loadFile("1-Question1.mp3");
+  optionsQuestion2[0] = minim.loadFile("1-Question2.mp3");
   
 }
 
