@@ -40,7 +40,7 @@ void loop() {
     FastLED.show();
     Serial.println("asks first question");
     //Serial.println()("1");
-    delay(5000);
+    delay(4000);
 
     // Step 2: Start breathing
     breathing = true;
