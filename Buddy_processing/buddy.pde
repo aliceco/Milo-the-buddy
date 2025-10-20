@@ -82,6 +82,7 @@ void draw() {
             case 3:
               println("Stage 2.5: Cheers");
               cheers.play();
+              delay(600);
               question_numb = (int)random(0, 4);
               println(question_numb);
               optionsQuestion2[0].play();
