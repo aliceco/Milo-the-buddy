@@ -7,12 +7,10 @@ String val;     // Data received from the serial port
 Minim minim;
 AudioPlayer welcome;
 AudioPlayer cheers;
-AudioPlayer question1;
 AudioPlayer portal;
 AudioPlayer letGo;
-AudioPlayer question2;
 AudioPlayer thankyou;
-
+AudioPlayer hiThere;
 
 
 AudioPlayer[] optionsQuestion1;
@@ -27,7 +25,7 @@ void setup() {
 
   //String portName = "/dev/cu.usbmodem1301"; // explicitly pick Arduino port
 
-  String portName = Serial.list()[4]; //change the 0 to a 1 or 2 etc. to match your port
+  String portName = Serial.list()[2]; //change the 0 to a 1 or 2 etc. to match your port
   myPort = new Serial(this, portName, 9600);
   println (Serial.list());
   
@@ -37,14 +35,21 @@ void setup() {
   welcome = minim.loadFile("Welcome.wav");
   portal = minim.loadFile("Portal.wav");  
   cheers = minim.loadFile("Cheers.wav");
-  letGo = minim.loadFile("letGo.mp3");
-  thankyou = minim.loadFile("thankyou.mp3");
+  letGo = minim.loadFile("letGo-slowed3.wav");
+  hiThere = minim.loadFile("Hi-there.mp3");
   
   optionsQuestion1 = new AudioPlayer[4];
-  optionsQuestion1[0] = minim.loadFile("1-Question1.mp3");
+  optionsQuestion1[0] = minim.loadFile("part1-q1.mp3");
+  optionsQuestion1[0] = minim.loadFile("part1-q2.mp3");
+  optionsQuestion1[0] = minim.loadFile("part1-q3.mp3");
+  optionsQuestion1[0] = minim.loadFile("part1-q4.mp3");
+
   
   optionsQuestion2 = new AudioPlayer[4];
-  optionsQuestion2[0] = minim.loadFile("1-Question2.mp3");
+  optionsQuestion2[0] = minim.loadFile("part2-q1.mp3");
+  optionsQuestion2[0] = minim.loadFile("part2-q2.mp3");
+  optionsQuestion2[0] = minim.loadFile("part2-q3.mp3");
+  optionsQuestion2[0] = minim.loadFile("part2-q4.mp3");
   
 }
 
@@ -67,11 +72,12 @@ void draw() {
             case 1:
               println("Stage 1: Welcome / Question 1");
               welcome.play();
+              delay(500);
               
               question_numb = (int)random(0, 4);
               delay(1000);
               println(question_numb);
-              optionsQuestion1[0].play();
+              optionsQuestion1[question_numb].play();
               question_numb = 0;
               break;
             case 2:
@@ -85,7 +91,7 @@ void draw() {
               delay(600);
               question_numb = (int)random(0, 4);
               println(question_numb);
-              optionsQuestion2[0].play();
+              optionsQuestion2[question_numb].play();
               question_numb = 0;
               break;
             

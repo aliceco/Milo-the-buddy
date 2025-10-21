@@ -92,6 +92,7 @@ void loop() {
     fill_solid(leds, 3, CRGB::Black); // turn them off
     FastLED.show();
     //whole array
+    Serial.println("2");
     for (int i = 0; i <= NUM_LEDS; i++) {
       leds[i] = CRGB(255, 100, 59);
       FastLED.show();
@@ -99,7 +100,6 @@ void loop() {
       delay(150);
     }
 
-    Serial.println("2");
     for (int i = 0; i <= NUM_LEDS; i++) {
       leds[i] = CRGB::Black; // turn them off
       FastLED.show();
