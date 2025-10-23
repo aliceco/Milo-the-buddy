@@ -5,7 +5,7 @@ Serial myPort;  // Create object from Serial class
 String val;     // Data received from the serial port
 
 Minim minim;
-AudioPlayer welcome;
+AudioPlayer startup;
 AudioPlayer cheers;
 AudioPlayer portal;
 AudioPlayer letGo;
@@ -23,8 +23,6 @@ int question_numb;
 
 void setup() {
 
-  //String portName = "/dev/cu.usbmodem1301"; // explicitly pick Arduino port
-
   String portName = Serial.list()[2]; //change the 0 to a 1 or 2 etc. to match your port
   myPort = new Serial(this, portName, 9600);
   //println (Serial.list());
@@ -32,7 +30,7 @@ void setup() {
   size(200,200);
   minim = new Minim(this);
   
-  welcome = minim.loadFile("Welcome.wav");
+  startup = minim.loadFile("startup.mp3");
   portal = minim.loadFile("Portal.wav");  
   cheers = minim.loadFile("Cheers.wav");
   letGo = minim.loadFile("letGo-slowed3.wav");
@@ -72,7 +70,7 @@ void draw() {
           switch(stage) {
             case 1:
               println("Stage 1: Welcome / Question 1");
-              welcome.play();
+              startup.play();
               delay(500);
               
               question_numb = (int)random(0, 4);
