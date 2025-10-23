@@ -11,6 +11,7 @@ AudioPlayer portal;
 AudioPlayer letGo;
 AudioPlayer thankyou;
 AudioPlayer hiThere;
+AudioPlayer goodbye;
 
 
 AudioPlayer[] optionsQuestion1;
@@ -36,6 +37,7 @@ void setup() {
   letGo = minim.loadFile("letGo-slowed3.wav");
   hiThere = minim.loadFile("Hi-there.mp3");
   thankyou = minim.loadFile("thankyou.mp3");
+  goodbye = minim.loadFile("goodbye.wav");
   
   optionsQuestion1 = new AudioPlayer[4];
   optionsQuestion1[0] = minim.loadFile("part1-q1.mp3");
@@ -72,9 +74,9 @@ void draw() {
               println("Stage 1: Welcome / Question 1");
               startup.play();
               delay(500);
-              
+              hiThere.play();
               question_numb = (int)random(0, 4);
-              delay(1000);
+              delay(1500);
               println(question_numb);
               optionsQuestion1[question_numb].play();
               question_numb = 0;
@@ -100,6 +102,8 @@ void draw() {
               portal.play();
               delay(1500);
               thankyou.play();
+              delay(500);
+              goodbye.play();
               break;
           }
         }
