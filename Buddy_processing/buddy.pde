@@ -37,7 +37,7 @@ void setup() {
   letGo = minim.loadFile("letGo-slowed3.wav");
   hiThere = minim.loadFile("Hi-there.mp3");
   thankyou = minim.loadFile("thankyou.mp3");
-  goodbye = minim.loadFile("goodbye.wav");
+  goodbye = minim.loadFile("goodbye2.wav");
   
   optionsQuestion1 = new AudioPlayer[4];
   optionsQuestion1[0] = minim.loadFile("part1-q1.mp3");
@@ -102,7 +102,7 @@ void draw() {
               portal.play();
               delay(1500);
               thankyou.play();
-              delay(500);
+              delay(1600);
               goodbye.play();
               break;
           }
